@@ -1,38 +1,38 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// generateBtn.onclick = function () {
-//   var lengthPrompt = prompt("Please input a number from 8-128 to indicate the desired length of your password.")
-//   if (lengthPrompt >= 8 && lengthPrompt <= 128) {
-//     var characterPrompt = prompt("Please indicate which character types you would like to include within your password ('lowercase', 'uppercase', 'numeric', and/or 'special characters'). Please check spelling: ")
-//     if (characterPrompt.toLocaleLowerCase === "lowercase" || "uppercase" || "numerical" || "special characters" ) {
+generateBtn.onclick = function () {
+  var lengthPrompt = prompt("Please input a number from 8-128 to indicate the desired length of your password.")
+  if (lengthPrompt >= 8 && lengthPrompt <= 128) {
+    var lowerConfirm = confirm("Does your password require lowercase characters? ")
+    var upperConfirm = confirm("Does your password require uppercase characters? ")
+    var numConfirm = confirm("Does your password require numerical characters? ")
+    var specConfirm = confirm("Does your password require special characters? ")
+  }
+  else alert("Answer is not acceptable. Please try again. ")
+}
 
-//     }
-//   }
-//   else alert("Your anser does not work. Please try again.")
-// }
+var length = lengthPrompt >= 8 && lengthPrompt <= 128;
+var lowerCharset = "abcdefghijklmnopqrstuvwxyz";
+var upperCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numCharset = "0123456789";
+var specCharset = "!@#$%^&*()_+";
 
-
+var charset = 
 
 
 // Write password to the #password input
-   function writePassword() {
-    generateBtn.onclick = function () {
-      var lengthPrompt = prompt("Please input a number from 8-128 to indicate the desired length of your password.")
-      if (lengthPrompt >= 8 && lengthPrompt <= 128) {
-        var characterPrompt = prompt("Please indicate which character types you would like to include within your password ('lowercase', 'uppercase', 'numeric', and/or 'special characters'). Please check spelling: ")
-        if (characterPrompt.toLocaleLowerCase === "lowercase" || "uppercase" || "numerical" || "special characters" ) {
-    
-        }
-      }
-      else alert("Your anser does not work. Please try again.")
-    }
-    //  var password = generatePassword()
-     var passwordText = document.querySelector("#password");
+function writePassword() {
+  var password = generatePassword() {
+    for (var i = 0, n = charset.length; i < length; ++i) {
+    retVal += charset.charAt(Math.floor(Math.random() * n));
+  }
+}
+var passwordText = document.querySelector("#password");
 
-     passwordText.value = password;
+passwordText.value = password;
 
-   }
+}
 
 // Add event listener to generate button
-  generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword);
