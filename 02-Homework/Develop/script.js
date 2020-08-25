@@ -4,7 +4,7 @@ var lowerCharset = "abcdefghijklmnopqrstuvwxyz";
 var upperCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numCharset = "0123456789";
 var specCharset = "!@#$%^&*()_+";
-var length = lengthPrompt >= 8 && lengthPrompt <= 128;
+
 var charArray = [];
 var charset = charArray.join();
 
@@ -18,38 +18,43 @@ generateBtn.onclick = function () {
     var specConfirm = confirm("Does your password require special characters? ")
   }
   else alert("Answer is not acceptable. Please try again. ")
+
+  // This is to evaluate what qualifications are selected for the random password. 
+  if(lowerConfirm == true) {
+    charArray.push(lowerCharset)
+  }
+  else if(upperConfirm == true) {
+    charArray.push(upperCharset)
+  }
+  else if(numConfirm == true) {
+    charArray.push(numCharset)
+  }
+  else if(specConfirm == true) {
+    charArray.push(specCharset)
+  }
+  else alert("You must click 'OK' at least once. ");
 }
+    
 
 
-// This is to evaluate what qualifications are selected for the random password. 
-if(lowerConfirm == true) {
-  charArray.push(lowerCharset)
-}
-else if(upperConfirm == true) {
-  charArray.push(upperCharset)
-}
-else if(numConfirm == true) {
-  charArray.push(numCharset)
-}
-else if(specConfirm == true) {
-  charArray.push(specCharset)
-}
-else alert("You must click 'OK' at least once. ");
+
 
 
 
 // Write password to the #password input
+var length = lengthPrompt.value;
+
 function writePassword() {
-  var password = generatePassword() {
-    for (var i = 0, n = charset.length; i < length; ++i) {
-    retVal += charset.charAt(Math.floor(Math.random() * n));
+  for (var i=0; i <= length; i++ ) {
+    password = password + charset.charAt(Math.floor(Math.random() * Math.floor(value.length - 1)));
   }
 }
+
 var passwordText = document.querySelector("#password");
 
 passwordText.value = password;
 
-}
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
