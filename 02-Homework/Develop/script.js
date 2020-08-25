@@ -9,7 +9,7 @@ var charArray = [];
 var charset = charArray.join();
 
 // This is what happens when you hit the 'Generate Password' button.
-generateBtn.onclick = function () {
+// generateBtn.onclick = function () {
   var lengthPrompt = prompt("Please input a number from 8-128 to indicate the desired length of your password.")
   if (lengthPrompt >= 8 && lengthPrompt <= 128) {
     var lowerConfirm = confirm("Does your password require lowercase characters? ")
@@ -20,41 +20,43 @@ generateBtn.onclick = function () {
   else alert("Answer is not acceptable. Please try again. ")
 
   // This is to evaluate what qualifications are selected for the random password. 
-  if(lowerConfirm == true) {
+  if (lowerConfirm == true) {
     charArray.push(lowerCharset)
   }
-  else if(upperConfirm == true) {
+  else if (upperConfirm == true) {
     charArray.push(upperCharset)
   }
-  else if(numConfirm == true) {
+  else if (numConfirm == true) {
     charArray.push(numCharset)
   }
-  else if(specConfirm == true) {
+  else if (specConfirm == true) {
     charArray.push(specCharset)
   }
   else alert("You must click 'OK' at least once. ");
-}
-    
 
+  // Write password to the #password input
+  var length = lengthPrompt;
 
-
-
-
-
-// Write password to the #password input
-var length = lengthPrompt.value;
-
-function writePassword() {
-  for (var i=0; i <= length; i++ ) {
-    password = password + charset.charAt(Math.floor(Math.random() * Math.floor(value.length - 1)));
+  function writePassword() {
+    for (var i = 0; i <= length; i++) {
+      password = password + charset.charAt(Math.floor(Math.random() * Math.floor(value.length - 1)));
+    }
   }
-}
 
-var passwordText = document.querySelector("#password");
+  var passwordText = document.querySelector("#password");
 
-passwordText.value = password;
-
+  passwordText.value = password;
 
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+
+  // Add event listener to generate button
+  generateBtn.addEventListener("click", writePassword);
+// }
+
+
+
+
+
+
+
+
