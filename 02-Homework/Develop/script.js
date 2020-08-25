@@ -1,6 +1,14 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var lowerCharset = "abcdefghijklmnopqrstuvwxyz";
+var upperCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numCharset = "0123456789";
+var specCharset = "!@#$%^&*()_+";
+var length = lengthPrompt >= 8 && lengthPrompt <= 128;
+var charArray = [];
+var charset = charArray.join();
 
+// This is what happens when you hit the 'Generate Password' button.
 generateBtn.onclick = function () {
   var lengthPrompt = prompt("Please input a number from 8-128 to indicate the desired length of your password.")
   if (lengthPrompt >= 8 && lengthPrompt <= 128) {
@@ -12,13 +20,22 @@ generateBtn.onclick = function () {
   else alert("Answer is not acceptable. Please try again. ")
 }
 
-var length = lengthPrompt >= 8 && lengthPrompt <= 128;
-var lowerCharset = "abcdefghijklmnopqrstuvwxyz";
-var upperCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numCharset = "0123456789";
-var specCharset = "!@#$%^&*()_+";
 
-var charset = 
+// This is to evaluate what qualifications are selected for the random password. 
+if(lowerConfirm == true) {
+  charArray.push(lowerCharset)
+}
+else if(upperConfirm == true) {
+  charArray.push(upperCharset)
+}
+else if(numConfirm == true) {
+  charArray.push(numCharset)
+}
+else if(specConfirm == true) {
+  charArray.push(specCharset)
+}
+else alert("You must click 'OK' at least once. ");
+
 
 
 // Write password to the #password input
