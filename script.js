@@ -46,8 +46,9 @@ function writePassword() {
     ansValidation.push(specValidation);
   }
   var charset = charArray.join("");
+  var allConfirm = lowerConfirm += upperConfirm += numConfirm += specConfirm
 
-  if (lowerConfirm == false){
+  if (allConfirm == false ){
     alert("You must click 'OK' at least once. ");
   }
   else alert ("You have selected: " + ansValidation + ".");
