@@ -1,18 +1,24 @@
-// Write password to the #password input
+// Global Variable and Function Declaration
 var generateBtn = document.querySelector("#generate");
 
 function writePassword() {
 
-  // Assignment Code
+  // writePassword Variables
   
   var lowerCharset = "abcdefghijklmnopqrstuvwxyz";
   var upperCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var numCharset = "0123456789";
-  var specCharset = "!@#$%^&*()_+";
+  var specCharset = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+
+  var lowerValidation = "lowercase characters"
+  var upperValidation = "Uppercase characters"
+  var numValidation = "numeric characters"
+  var specValidation = "special characters"
 
   var charArray = [];
+  var ansValidation = [];
 
-  // This is what happens when you hit the 'Generate Password' button.
+  // Password Qualification Questions
   var lengthPrompt = prompt("Please input a number from 8-128 to indicate the desired length of your password.")
   if (lengthPrompt >= 8 && lengthPrompt <= 128) {
     var lowerConfirm = confirm("Does your password require lowercase characters? ")
@@ -22,32 +28,44 @@ function writePassword() {
   }
   else alert("Answer is not acceptable. Please try again. ")
 
-  // This is to evaluate what qualifications are selected for the random password. 
+  // Password Qualification Evaluation and Validation
   if (lowerConfirm == true) {
-    charArray.push(lowerCharset)
+    charArray.push(lowerCharset);
+    ansValidation.push(lowerValidation);
   }
   if (upperConfirm == true) {
-    charArray.push(upperCharset)
+    charArray.push(upperCharset);
+    ansValidation.push(upperValidation);
   }
   if (numConfirm == true) {
-    charArray.push(numCharset)
+    charArray.push(numCharset);
+    ansValidation.push(numValidation);
   }
   if (specConfirm == true) {
-    charArray.push(specCharset)
+    charArray.push(specCharset);
+    ansValidation.push(specValidation);
   }
-  else alert("You must click 'OK' at least once. ");
+  var charset = charArray.join("");
 
-  var charset = charArray.join();
-
+  if (lowerConfirm == false){
+    alert("You must click 'OK' at least once. ");
+  }
+  else alert ("You have selected: " + ansValidation + ".");
+// Generating the Password
   var length = parseInt(lengthPrompt);
+
+  var password = "";
 
   for (var i = 0; i < length; i++) {
     password = password + charset.charAt(Math.floor(Math.random() * Math.floor(charset.length - 1)));
   }
 
+  // Writing the Password to the HTML File
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+
+  
 }
 
 
