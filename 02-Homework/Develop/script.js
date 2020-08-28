@@ -1,15 +1,18 @@
-// Assignment Code
+// Write password to the #password input
 var generateBtn = document.querySelector("#generate");
-var lowerCharset = "abcdefghijklmnopqrstuvwxyz";
-var upperCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numCharset = "0123456789";
-var specCharset = "!@#$%^&*()_+";
 
-var charArray = [];
-var charset = charArray.join();
+function writePassword() {
 
-// This is what happens when you hit the 'Generate Password' button.
-// generateBtn.onclick = function () {
+  // Assignment Code
+  
+  var lowerCharset = "abcdefghijklmnopqrstuvwxyz";
+  var upperCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numCharset = "0123456789";
+  var specCharset = "!@#$%^&*()_+";
+
+  var charArray = [];
+
+  // This is what happens when you hit the 'Generate Password' button.
   var lengthPrompt = prompt("Please input a number from 8-128 to indicate the desired length of your password.")
   if (lengthPrompt >= 8 && lengthPrompt <= 128) {
     var lowerConfirm = confirm("Does your password require lowercase characters? ")
@@ -23,35 +26,37 @@ var charset = charArray.join();
   if (lowerConfirm == true) {
     charArray.push(lowerCharset)
   }
-  else if (upperConfirm == true) {
+  if (upperConfirm == true) {
     charArray.push(upperCharset)
   }
-  else if (numConfirm == true) {
+  if (numConfirm == true) {
     charArray.push(numCharset)
   }
-  else if (specConfirm == true) {
+  if (specConfirm == true) {
     charArray.push(specCharset)
   }
   else alert("You must click 'OK' at least once. ");
 
-  // Write password to the #password input
-  var length = lengthPrompt;
+  var charset = charArray.join();
 
-  function writePassword() {
-    for (var i = 0; i <= length; i++) {
-      password = password + charset.charAt(Math.floor(Math.random() * Math.floor(value.length - 1)));
-    }
+  var length = parseInt(lengthPrompt);
+
+  for (var i = 0; i < length; i++) {
+    password = password + charset.charAt(Math.floor(Math.random() * Math.floor(charset.length - 1)));
   }
 
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+}
 
 
 
-  // Add event listener to generate button
-  generateBtn.addEventListener("click", writePassword);
-// }
+
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
 
 
 
