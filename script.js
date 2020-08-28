@@ -10,10 +10,10 @@ function writePassword() {
   var numCharset = "0123456789";
   var specCharset = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
-  var lowerValidation = "lowercase characters"
-  var upperValidation = "Uppercase characters"
-  var numValidation = "numeric characters"
-  var specValidation = "special characters"
+  var lowerValidation = " lowercase characters"
+  var upperValidation = " uppercase characters"
+  var numValidation = " numeric characters"
+  var specValidation = " special characters"
 
   var charArray = [];
   var ansValidation = [];
